@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title></title>
+  <style>
+  #numeros{
+ visibility: hidden;
+ opacity: 0;
+ transition: .3s all;
+}
+ 
+  #realizarSorteio{
+ visibility: hidden;
+ opacity: 0;
+      transition: .3s all;
+}
+  </style>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div>
+    <h4>Quantos números você quer apostar?</h4>
+  </div>
+  <div>
+    <select id="apostaNumeros">
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+      <option>10</option>
+      <option>11</option>
+      <option>12</option>
+      <option>13</option>
+      <option>14</option>
+      <option>15</option>
+    </select>
+  </div>
+  <div id="numeros">
+  </div>
+  <button id='realizarSorteio'>Realizar Sorteio</button>
+  <script>
+ 
+  $( document ).ready(function() {
+ var searchIDs = '';
+ var numerosSorteados = [];
+ var numerosAcertos = [];
+ var inputNumber = '<input type="checkbox" id="{{id}}" name="{{nome}}" value={{value}}><label for="{{nome}}">{{label}}</label>';
+ var apostas = document.getElementById('apostaNumeros');
+ var numeros = document.getElementById('numeros');
+ for(var i = 1; i<= 60; i++){
+ let res = inputNumber.replace('{{id}}', 'Sortear'+i);
+ res = res.replace('{{nome}}', 'Sortear'+i);
+ res = res.replace('{{nome}}', 'Sortear'+i);
+ res = res.replace('{{value}}', i);
+ res = res.replace('{{label}}', i);
+ numeros.innerHTML += res;
+}
+var numberSelected = $(numeros).find('input');
+apostas.onchange = function(){
+apostas.valor = apostas.value;
+numeros.style.opacity= '1';
+numeros.style.visibility= 'visible';
+}
+numberSelected.click(function(event){
+//event.preventDefault();
+searchIDs = $("#numeros input:checkbox:checked").map(function(){
+return $(this).val();
+}).get(); // <----
+if(searchIDs.length == apostas.valor){
+console.log('to completo');
+numberSelected.each(function(){
+$(this).prop('disabled', true);
+apostas.valor = apostas.value;
+$('#realizarSorteio').css({
+'opacity': '1',
+'visibility': 'visible'
+});
+});
+}
+console.log(searchIDs);
+});
+
+function getRandomInt(min, max) {
+min = Math.ceil(min);
+max = Math.floor(max);
+return Math.floor(Math.random() * (max - min)) + min;
+}
+
+$('#realizarSorteio').click(function(){
+$(this).prop('disabled', true);
+for(var i = 1; i <= searchIDs.length; i++){
+numerosSorteados.push(getRandomInt(1,60));
+console.log(numerosSorteados);
+}
+compareValue();
+});
+
+compareValue = function(){
+for(var i = 0; i < searchIDs.length; i++){
+if(searchIDs[i] == numerosSorteados[i]){
+numerosAcertos.push(searchIDs[i]);
+console.log(numerosAcertos[i]);
+}
+}
+};
+});
+ 
+  </script>
+</body>
+
+</html>
