@@ -1,0 +1,93 @@
+@import 'colors';
+input[id*="Sortear"] {
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    visibility: hidden;
+    opacity: 1;
+
+    &::before {
+        content: attr(value);
+        width: 30px;
+        height: 30px;
+        background: $azulmedio;
+        color: $bemescura;
+        position: relative;
+        z-index: 999;
+        visibility: visible;
+        vertical-align: middle;
+        text-align: center;
+        display: grid;
+        align-items: center;
+        align-content: center;
+        margin: auto;
+        opacity: 1;
+        transition: .3s all;
+        border-radius: 50%;
+    }
+
+    &:checked {
+        &::before {
+            background: $azulescuro;
+            color: $azulclaro;
+            box-shadow: 0px 0px 4px 2px $media;
+        }
+    }
+
+    &:disabled {
+        &::before {
+            opacity: .5;
+        }
+    }
+}
+
+input[name=aposta]{
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    visibility: hidden;
+    opacity: 1;
+    cursor: pointer;
+    &::before {
+        content: attr(value);
+        width: 30px;
+        height: 30px;
+        background: $media;
+        color: $maisclara;
+        position: relative;
+        visibility: visible;
+        vertical-align: middle;
+        text-align: center;
+        display: grid;
+        align-items: center;
+        align-content: center;
+        border-radius: 50%;
+        margin: auto;
+        opacity: 1;
+        transition: .3s all;
+    }
+    &:checked{
+        &::before {
+            transition: .3s all;
+            background:$escura;
+            box-shadow: 0px 0px 4px 2px $media;
+        }
+    }
+}
+
+#numeros {
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s all;
+    text-align: center;
+}
+
+#realizarSorteio {
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s all;
+}
+#apostaNumeros{
+    text-align: center;
+    margin: auto;
+}

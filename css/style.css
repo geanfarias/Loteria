@@ -1,0 +1,105 @@
+input[id*="Sortear"] {
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+  visibility: hidden;
+  opacity: 1;
+}
+
+input[id*="Sortear"]::before {
+  content: attr(value);
+  width: 30px;
+  height: 30px;
+  background: #93BFBB;
+  color: #084A59;
+  position: relative;
+  z-index: 999;
+  visibility: visible;
+  vertical-align: middle;
+  text-align: center;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  margin: auto;
+  opacity: 1;
+  -webkit-transition: .3s all;
+  transition: .3s all;
+  border-radius: 50%;
+}
+
+input[id*="Sortear"]:checked::before {
+  background: #025159;
+  color: #BFD9D6;
+  -webkit-box-shadow: 0px 0px 4px 2px #6D9BA6;
+          box-shadow: 0px 0px 4px 2px #6D9BA6;
+}
+
+input[id*="Sortear"]:disabled::before {
+  opacity: .5;
+}
+
+input[name=aposta] {
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+  visibility: hidden;
+  opacity: 1;
+  cursor: pointer;
+}
+
+input[name=aposta]::before {
+  content: attr(value);
+  width: 30px;
+  height: 30px;
+  background: #6D9BA6;
+  color: #F2F2F2;
+  position: relative;
+  visibility: visible;
+  vertical-align: middle;
+  text-align: center;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  border-radius: 50%;
+  margin: auto;
+  opacity: 1;
+  -webkit-transition: .3s all;
+  transition: .3s all;
+}
+
+input[name=aposta]:checked::before {
+  -webkit-transition: .3s all;
+  transition: .3s all;
+  background: #196273;
+  -webkit-box-shadow: 0px 0px 4px 2px #6D9BA6;
+          box-shadow: 0px 0px 4px 2px #6D9BA6;
+}
+
+#numeros {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: .3s all;
+  transition: .3s all;
+  text-align: center;
+}
+
+#realizarSorteio {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: .3s all;
+  transition: .3s all;
+}
+
+#apostaNumeros {
+  text-align: center;
+  margin: auto;
+}
+/*# sourceMappingURL=style.css.map */

@@ -2,114 +2,50 @@
 <html>
 
 <head>
-  <title></title>
-  <style>
-  #numeros{
- visibility: hidden;
- opacity: 0;
- transition: .3s all;
-}
- 
-  #realizarSorteio{
- visibility: hidden;
- opacity: 0;
-      transition: .3s all;
-}
-  </style>
-  <script src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
+  <title>Loteria Online</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.12/css/bootstrap-select.min.css"
+    integrity="sha256-l3FykDBm9+58ZcJJtzcFvWjBZNJO40HmvebhpHXEhC0=" crossorigin="anonymous" />
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
 </head>
 
-<body>
-  <div>
+<body class="container">
+  <div class="col-md-12">
     <h4>Quantos números você quer apostar?</h4>
   </div>
-  <div>
-    <select id="apostaNumeros">
-      <option>6</option>
-      <option>7</option>
-      <option>8</option>
-      <option>9</option>
-      <option>10</option>
-      <option>11</option>
-      <option>12</option>
-      <option>13</option>
-      <option>14</option>
-      <option>15</option>
-    </select>
+  <div class="col-md-7" id="apostaNumeros">
+    <input type="radio" name="aposta" value="6">
+    <input type="radio" name="aposta" value="7">
+    <input type="radio" name="aposta" value="8">
+    <input type="radio" name="aposta" value="9">
+    <input type="radio" name="aposta" value="10">
+    <input type="radio" name="aposta" value="11">
+    <input type="radio" name="aposta" value="12">
+    <input type="radio" name="aposta" value="13">
+    <input type="radio" name="aposta" value="14">
+    <input type="radio" name="aposta" value="15">
   </div>
-  <div id="numeros">
+  <div id="numeros" class="col-md-6" style="margin: auto;">
   </div>
   <button id='realizarSorteio'>Realizar Sorteio</button>
-  <script>
- 
-  $( document ).ready(function() {
- var searchIDs = '';
- var numerosSorteados = [];
- var numerosAcertos = [];
- var inputNumber = '<input type="checkbox" id="{{id}}" name="{{nome}}" value={{value}}><label for="{{nome}}">{{label}}</label>';
- var apostas = document.getElementById('apostaNumeros');
- var numeros = document.getElementById('numeros');
- for(var i = 1; i<= 60; i++){
- let res = inputNumber.replace('{{id}}', 'Sortear'+i);
- res = res.replace('{{nome}}', 'Sortear'+i);
- res = res.replace('{{nome}}', 'Sortear'+i);
- res = res.replace('{{value}}', i);
- res = res.replace('{{label}}', i);
- numeros.innerHTML += res;
-}
-var numberSelected = $(numeros).find('input');
-apostas.onchange = function(){
-apostas.valor = apostas.value;
-numeros.style.opacity= '1';
-numeros.style.visibility= 'visible';
-}
-numberSelected.click(function(event){
-//event.preventDefault();
-searchIDs = $("#numeros input:checkbox:checked").map(function(){
-return $(this).val();
-}).get(); // <----
-if(searchIDs.length == apostas.valor){
-console.log('to completo');
-numberSelected.each(function(){
-$(this).prop('disabled', true);
-apostas.valor = apostas.value;
-$('#realizarSorteio').css({
-'opacity': '1',
-'visibility': 'visible'
-});
-});
-}
-console.log(searchIDs);
-});
-
-function getRandomInt(min, max) {
-min = Math.ceil(min);
-max = Math.floor(max);
-return Math.floor(Math.random() * (max - min)) + min;
-}
-
-$('#realizarSorteio').click(function(){
-$(this).prop('disabled', true);
-for(var i = 1; i <= searchIDs.length; i++){
-numerosSorteados.push(getRandomInt(1,60));
-console.log(numerosSorteados);
-}
-compareValue();
-});
-
-compareValue = function(){
-for(var i = 0; i < searchIDs.length; i++){
-if(searchIDs[i] == numerosSorteados[i]){
-numerosAcertos.push(searchIDs[i]);
-console.log(numerosAcertos[i]);
-}
-}
-};
-});
- 
-  </script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.12/js/bootstrap-select.min.js"
+    integrity="sha256-+o/X+QCcfTkES5MroTdNL5zrLNGb3i4dYdWPWuq6whY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.12/js/i18n/defaults-pt_BR.min.js"
+    integrity="sha256-z+rQOLohDxw89Wxs4RK2BhYCP3oDnaKx7sbcSGe7Jys=" crossorigin="anonymous"></script>
+  <script src="js/index.js"></script>
 </body>
 
 </html>
