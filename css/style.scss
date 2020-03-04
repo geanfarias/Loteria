@@ -46,6 +46,7 @@ input[id*="Sortear"] {
     &:disabled {
         &::before {
             opacity: .5;
+            cursor: not-allowed;
         }
     }
 }
