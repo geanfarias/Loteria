@@ -73,6 +73,11 @@ input[name=aposta]:checked::before {
           box-shadow: 0px 0px 4px 2px #6D9BA6;
 }
 
+input[name=aposta]:disabled::before {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
 #numeros {
   -webkit-transition: .3s all;
   transition: .3s all;
@@ -86,8 +91,11 @@ input[name=aposta]:checked::before {
 }
 
 #realizarSorteio {
-  visibility: hidden;
-  opacity: 0;
+  display: none;
+}
+
+#realizarSorteio button {
+  display: none;
   -webkit-transition: .3s all;
   transition: .3s all;
   background: white;
@@ -100,7 +108,7 @@ input[name=aposta]:checked::before {
   transition: .5s all;
 }
 
-#realizarSorteio:hover {
+#realizarSorteio button:hover {
   background: #59599e;
   color: white;
   border-color: black;
@@ -110,13 +118,13 @@ input[name=aposta]:checked::before {
   outline: none;
 }
 
-#realizarSorteio:active {
+#realizarSorteio button:active {
   -webkit-box-shadow: none;
           box-shadow: none;
   top: 0;
 }
 
-#realizarSorteio:disabled {
+#realizarSorteio button:disabled {
   opacity: .5 !important;
   top: 0;
   -webkit-box-shadow: none;
@@ -130,7 +138,15 @@ input[name=aposta]:checked::before {
   margin: auto;
 }
 
-#resultados, #acertos {
+#resultados,
+#acertos {
+  display: block;
+}
+
+#resultados h4,
+#resultados input,
+#acertos h4,
+#acertos input {
   display: none;
 }
 /*# sourceMappingURL=style.css.map */
