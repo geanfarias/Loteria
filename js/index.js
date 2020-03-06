@@ -1,14 +1,14 @@
 $(document).ready(function () {
-    var searchIDs = [];
-    var numerosSorteados = [];
-    var numerosAcertos = [];
     var apostas = {
-        valor: ''
+        quantidade: '',
+        valoresApostados: []
     };
     var numeros = $('#numeros');
+    var resultados = $('#resultados');
+    var acertos = $('#acertos');
 
     const createInput = () => {
-        for (var i = 1; i <= Ammout; i++) {
+        for (let i = 1; i <= Ammout; i++) {
             numeros.append(`<input type="checkbox" id="${'Sortear' + i}" name="${'Sortear' + i}" value=${i}>`);
         }
         return $(numeros).find('input');
@@ -18,13 +18,23 @@ $(document).ready(function () {
         return 60;
     }
 
-    printResult = (numerosSorteados) => {
-        for (var i = 0; i < searchIDs.length; i++) {
-            if (numerosSorteados.sorted.indexOf(searchIDs[i]) !== -1) {
-                numerosAcertos.push(searchIDs[i]);
-                console.log(numerosAcertos);
+    printResult = (result) => {
+
+        resultados.fadeIn('slow')
+
+        const {sorted, win} = result;
+
+        for (let i = 0; i < sorted.length; i++) {
+            resultados.append(`<input disabled type="checkbox" id="${'Resultado' + sorted[i]}" name="${'Resultado' + sorted[i]}" value=${sorted[i]}>`);
+        }
+
+        if(win.length >0){
+            acertos.fadeIn('fast')
+            for (let i = 0; i < win.length; i++) {
+                acertos.append(`<input type="checkbox" id="${'Resultado' + win[i]}" name="${'Resultado' + win[i]}" value=${win[i]}>`);
             }
         }
+        
     };
 
     const Ammout = setAmmountBet();
@@ -35,11 +45,9 @@ $(document).ready(function () {
         $.ajax({
             method: "GET",
             url: 'http://localhost:3000/sortear.php',
-            data: {
-                total: apostas.valor
-            },
+            data: apostas,
             success: function (result) {
-                console.log(result);
+                console.log(JSON.parse(result));
                 printResult(JSON.parse(result));
             },
             error: function (result) {
@@ -51,10 +59,10 @@ $(document).ready(function () {
 
     numberSelected.on('click', () => {
         //event.preventDefault();
-        searchIDs = $("#numeros input:checkbox:checked").map(function () {
+        apostas.valoresApostados = $("#numeros input:checkbox:checked").map(function () {
             return +$(this).val();
         }).get(); // <----
-        if (searchIDs.length == apostas.valor) {
+        if (apostas.valoresApostados.length == apostas.quantidade) {
             numberSelected.each(function () {
                 $(this).prop('disabled', true);
                 // apostas.valor = apostas.value;
@@ -64,14 +72,16 @@ $(document).ready(function () {
                 });
             });
         }
-        console.log(searchIDs);
+        console.log(apostas.valoresApostados);
     });
 
     $('#apostaNumeros input').on('change', () => {
-        apostas.valor = $('input[name=aposta]:checked').val();
+        apostas.quantidade = +$('input[name=aposta]:checked').val();
         numeros.css({
-            'opacity': '1',
-            'visibility': 'visible'
+            'display': 'block'
         });
+        numeros.find('input').each(function(){
+            $(this).fadeIn("slow");
+        })
     });
 });

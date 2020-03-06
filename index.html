@@ -9,32 +9,42 @@
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.12/css/bootstrap-select.min.css"
     integrity="sha256-l3FykDBm9+58ZcJJtzcFvWjBZNJO40HmvebhpHXEhC0=" crossorigin="anonymous" />
-  </head>
-  
-  <body class="container">
-    <div class="col-md-12" style="text-align: center;">
-      <h4>Quantos números você quer apostar?</h4>
-    </div>
-    <div class="col-md-7" id="apostaNumeros">
-      <input type="radio" name="aposta" value="6">
-      <input type="radio" name="aposta" value="7">
-      <input type="radio" name="aposta" value="8">
-      <input type="radio" name="aposta" value="9">
-      <input type="radio" name="aposta" value="10">
-      <input type="radio" name="aposta" value="11">
-      <input type="radio" name="aposta" value="12">
+</head>
+
+<body class="container">
+  <div class="col-md-12" style="text-align: center;">
+    <h4>Quantos números você quer apostar?</h4>
+  </div>
+  <div class="col-md-7" id="apostaNumeros">
+    <input type="radio" name="aposta" value="6">
+    <input type="radio" name="aposta" value="7">
+    <input type="radio" name="aposta" value="8">
+    <input type="radio" name="aposta" value="9">
+    <input type="radio" name="aposta" value="10">
+    <input type="radio" name="aposta" value="11">
+    <input type="radio" name="aposta" value="12">
     <input type="radio" name="aposta" value="13">
     <input type="radio" name="aposta" value="14">
     <input type="radio" name="aposta" value="15">
   </div>
-  <div id="numeros" class="col-md-6" style="margin: auto;">
+  <div id="numeros" class="col-md-6"></div>
+  <div id="resultados" class="col-md-6">
+    <div class="col-md-12" style="text-align: center;">
+      <h4>Números sorteados:</h4>
+    </div>
   </div>
+  <div id="acertos" class="col-md-6">
+    <div class="col-md-12" style="text-align: center;">
+      <h4>Quantidade de acertos:</h4>
+    </div>
+  </div>
+  <button id='realizarSorteio'>Realizar Sorteio</button>
   <button id='realizarSorteio'>Realizar Sorteio</button>
   <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-  crossorigin="anonymous"></script>
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
