@@ -107,7 +107,7 @@ $(document).ready(function () {
             await eachElement(acertos.find('h4'), 'hide');
             await eachElement(acertos.find('h5'), 'hide');
             acertos.find('input').remove();
-            $('#realizarSorteio button').text('Refazer Sorteio').prop('disabled', true).attr('data-id', 'btnRealizar');
+            $('#realizarSorteio button').text('Realizar Sorteio').prop('disabled', true).attr('data-id', 'btnRealizar');
         }
     });
 
