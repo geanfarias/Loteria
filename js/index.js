@@ -82,7 +82,7 @@ $(document).ready(function () {
         if ($(this).attr('data-id') == 'btnRealizar') {
             $.ajax({
                 method: "GET",
-                url: 'http://localhost:3000/sortear.php',
+                url: './sortear.php',
                 data: apostas,
                 success: function (result) {
                     printResult(JSON.parse(result));
@@ -90,7 +90,6 @@ $(document).ready(function () {
                 },
                 error: function (result) {
                     console.log(result);
-                    await()
                 }
             });
         }
@@ -105,7 +104,7 @@ $(document).ready(function () {
             resultados.find('input').remove();
             await eachElement(numeros.find('input'), 'show');
             await eachElement(acertos.find('h4'), 'hide');
-            await eachElement(acertos.find('h5'), 'hide');
+            acertos.find('h5').remove();
             acertos.find('input').remove();
             $('#realizarSorteio button').text('Realizar Sorteio').prop('disabled', true).attr('data-id', 'btnRealizar');
         }
